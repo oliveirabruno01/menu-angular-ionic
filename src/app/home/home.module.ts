@@ -6,6 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
 import { CategoriaComponentModule } from '../categoria/categoria.module';
+import { ProdutoComponentModule } from '../produto/produto.module';
+import { PromocionalComponentModule } from '../promocional/promocional.module';
 
 @NgModule({
   imports: [
@@ -13,7 +15,9 @@ import { CategoriaComponentModule } from '../categoria/categoria.module';
     FormsModule,
     IonicModule,
     CategoriaComponentModule,
-    HomePageRoutingModule
+    HomePageRoutingModule,
+    ProdutoComponentModule,
+    PromocionalComponentModule
   ],
   declarations: [HomePage]
 })

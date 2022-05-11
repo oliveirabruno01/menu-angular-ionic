@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [text]="getBackButtonText()" defaultHref="/"></ion-back-button>
+      <ion-text><h2>Voltar</h2></ion-text>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" *ngIf="produto">
+  <ion-row>
+    <ion-text class="recipe ion-text-center">
+      <ion-title>{{ produto.nome }} </ion-title>
+      <h5>{{ produto.descricao }}</h5>
+    </ion-text>
+  </ion-row>
+  <ion-row>
+    <ion-img class="banner" [src]="produto.thumbnail_src"></ion-img>
+  </ion-row>
+  <ion-row class="recipe-action">
+    <ion-col class="ion-text-center">
+      <ion-text color="primary">
+        <h2>{{ produto.preco }}</h2>
+      </ion-text>
+    </ion-col>
+    <ion-col class="ion-text-center">
+      <ion-button color="success">Pedir</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-content>

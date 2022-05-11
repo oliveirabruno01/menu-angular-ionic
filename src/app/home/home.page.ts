@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DataService, CategoriaObject } from '../services/data.service';
+import { DataService, CategoriaObject, Produto } from '../services/data.service';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +7,7 @@ import { DataService, CategoriaObject } from '../services/data.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  public itemPromocional: Produto;
   constructor(private data: DataService) {}
 
   refresh(ev) {
@@ -19,4 +20,8 @@ export class HomePage {
     return this.data.getCategoriasList();
   }
 
+  getProdutoPromocional(): Produto {
+    console.log(this.data.getProduto("Promocional"));
+    return this.data.getProduto("Promocional");
+  }
 }

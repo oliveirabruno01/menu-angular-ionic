@@ -1,0 +1,42 @@
+ion-item {
+  --inner-padding-end: 0;
+  --background: transparent;
+}
+
+ion-row app-produto {
+  margin: 0 auto 0 auto;
+}
+
+ion-row {
+  padding: 0px;
+  margin: 0px;
+}
+
+ion-content {
+  display: flex;
+  height: 100%;
+}
+
+.banner {
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;;
+  max-width: 400px;
+}
+
+.recipe {
+  margin: auto;
+  margin-top: 2rem;
+}
+
+.recipe ion-title {
+  font-family: Breathe !important;
+  font-size: 3em;
+}
+
+.recipe ion-text h5  {
+  margin-top: 2rem;
+  margin-left: 18rem;
+  max-width: 450px;
+}

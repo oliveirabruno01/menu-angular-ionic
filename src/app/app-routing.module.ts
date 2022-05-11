@@ -11,6 +11,10 @@ const routes: Routes = [
     loadChildren: () => import('./view-categoria/view-categoria.module').then( m => m.ViewCategoriaPageModule)
   },
   {
+    path: 'produto/:nome',
+    loadChildren: () => import('./view-produto/view-produto.module').then( m => m.ViewProdutoPageModule)
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
