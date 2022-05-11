@@ -3,27 +3,17 @@ import { Injectable } from '@angular/core';
 /** Diretório das imagens dos produtos.*/
 const images_path = './assets/images/itens/';
 
-
-/** Interface do tipo Categoria, composto pelo nome e pelo caminho da thumbnail. 
- * @param {string} nome Nome da `Categoria`.
- * @param {string} thumbnail_src Caminho da thumbnail.
-*/
-export interface CategoriaObject {
-  nome: string;
-  thumbnail_src: string;
-}
-
 /** Interface do tipo Produto, composto pelo nome, caminho da thumbnail, preço, e descrição do produto.
  * @param {string} nome Nome do produto.
  * @param {string} thumbnail_src Caminho da thumbnail.
  * @param {string} preco Preço do produto.
  * @param {string} descricao Descrição do produto.
- */
+*/
 export interface Produto {
-  nome: string;
-  thumbnail_src: string;
-  preco: string;
-  descricao: string;
+    nome: string;
+    thumbnail_src: string;
+    preco: string;
+    descricao: string;
 }
 
 /** Interface do tipo ProdutosPorCategoria, responsável por relacionar os produtos às suas respectivas Categorias.
@@ -31,48 +21,18 @@ export interface Produto {
  * @param {Produto[]} produtos Array de produtos pertencentes à categoria.
 */
 export interface ProdutosPorCategoria {
-  nome: string;
-  categoria: Produto[];
+    nome: string;
+    categoria: Produto[];
 }
 
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 
-/** Classe DataService, responsável por manter e prover os dados das categorias e produtos.
-*/
-export class DataService {
-  /** Dados das CategoriaObject */
-  public categorias: CategoriaObject[] = [
-    {
-      nome: 'lanches',
-      thumbnail_src: './assets/images/thumbnails/hamburguer.png',
-    },
-  
-    {
-      nome: 'entradas',
-      thumbnail_src: './assets/images/thumbnails/prato-entrada.png',
-    },
-  
-    {
-      nome: 'refeições',
-      thumbnail_src: './assets/images/thumbnails/refeicao.png',
-    },
-  
-    {
-      nome: 'sobremesas',
-      thumbnail_src: './assets/images/thumbnails/sobremesa.png',
-    },
-  
-    {
-      nome: 'bebidas',
-      thumbnail_src: './assets/images/thumbnails/bebida.png',
-    }
-  ];
-
-  /** Dados dos ProdutosPorCategoria.*/
-  public itens: ProdutosPorCategoria[] = [
+export class ProdutoService {
+    /** Dados dos ProdutosPorCategoria.*/
+    public itens: ProdutosPorCategoria[] = [
     {
       nome: "lanches",
       categoria: [
@@ -284,61 +244,46 @@ export class DataService {
         },
       ]
     }
-  ];
+    ];
 
-  /** Create a DataService. */
-  constructor() { }
+    /** Create a ProdutoService. */
+    constructor() { }
 
-  /** Função getCategoriasList. 
-   * @returns Retorna `this.categorias`.
-  */
-  public getCategoriasList(): CategoriaObject[] {
-    return this.categorias;
-  }
-
-  /** Função getCategoriaByNome.
-   * @param {string} nome Nome da categoria.
-  * @return Retorna o objeto `Categoria` de nome `nome` .*/ 
-  public getCategoriaByNome(nome: string): CategoriaObject {
-    /** Retorne `this.categorias[nome]` apenas se o resultado não for `undefined`. */
-    return this.categorias[nome]!;
-  }
-
-  /** Função getCategoria.
-   * @param {string} nome Nome da categoria.
-   * @returns {ProdutosPorCategoria} Retorna uma Array dos produtos pertencentes à categoria `nome`.
-  */
-  public getCategoriaItem = (nome : string): ProdutosPorCategoria => {
-    return this.itens.find(item => item.nome === nome);
-  };
-
-  /** Função getProdutos.
-   * @returns {Produto[]} Retorna uma Array de `Produto` com todos os produtos de todas as categorias em `this.itens`.
-  */
-  public getProdutos = () => {
-    /**  Array vazia de `Produto`*/
-    var all_itens: Produto[] = [];
-    /** Para cada `categoria` em this.itens: concatene `all_itens` com os produtos da `categoria` */
-    this.itens.forEach((categoria) => {all_itens = all_itens.concat(categoria.categoria)});
-    return all_itens;
-  }
-
-  /** Função getCategoriaProdutos.
-   * @param {string} nome Nome do objeto `ProdutosPorCategoria`;
-   * @returns {ProdutosPorCategoria} Retorna o objeto `ProdutosPorCategoria` de nome `nome` em itens.
-  */
-  public getCategoriaProdutos = (nome: string) => {
-    /**  Aqui declarei `final_itens` passando `this.getCategoriaItem(nome)!`.
-     * Repare que esse `!` serve para impedir que `final_itens` receba algum valor `undefined`.
-     * O que causaria problemas ao tentar acessar o objeto de retorno.
+    /** Função getCategoria.
+     * @param {string} nome Nome da categoria.
+     * @returns {ProdutosPorCategoria} Retorna uma Array dos produtos pertencentes à categoria `nome`.
     */
-    const final_itens: ProdutosPorCategoria = this.getCategoriaItem(nome)!;
-    return final_itens.categoria;
-  }
+    public getCategoriaItem = (nome : string): ProdutosPorCategoria => {
+        return this.itens.find(item => item.nome === nome);
+    };
 
-  /** Função getProduto.
-    * @param {string} nome Nome do produto.
-   * @returns {Produto} Retorna o objeto `Produto`de nome igual à `nome` em `getTodosProdutos`.
-  */
-  public getProduto = (nome: string) => this.getProdutos().find(m => m.nome === nome);
+    /** Função getProdutos.
+     * @returns {Produto[]} Retorna uma Array de `Produto` com todos os produtos de todas as categorias em `this.itens`.
+    */
+    public getProdutos = () => {
+        /**  Array vazia de `Produto`*/
+        var all_itens: Produto[] = [];
+        /** Para cada `categoria` em this.itens: concatene `all_itens` com os produtos da `categoria` */
+        this.itens.forEach((categoria) => {all_itens = all_itens.concat(categoria.categoria)});
+        return all_itens;
+    }
+
+    /** Função getCategoriaProdutos.
+     * @param {string} nome Nome do objeto `ProdutosPorCategoria`;
+     * @returns {ProdutosPorCategoria} Retorna o objeto `ProdutosPorCategoria` de nome `nome` em itens.
+    */
+    public getCategoriaProdutos = (nome: string) => {
+        /**  Aqui declarei `final_itens` passando `this.getCategoriaItem(nome)!`.
+         * Repare que esse `!` serve para impedir que `final_itens` receba algum valor `undefined`.
+         * O que causaria problemas ao tentar acessar o objeto de retorno.
+        */
+        const final_itens: ProdutosPorCategoria = this.getCategoriaItem(nome)!;
+        return final_itens.categoria;
+    }
+
+    /** Função getProduto.
+     * @param {string} nome Nome do produto.
+     * @returns {Produto} Retorna o objeto `Produto`de nome igual à `nome` em `getTodosProdutos`.
+    */
+    public getProduto = (nome: string) => this.getProdutos().find(m => m.nome === nome);
 }

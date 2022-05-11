@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { CategoriaObject } from '../services/data.service';
+import { CategoriaObject } from '../services/categoria.service';
 
 @Component({
   selector: 'app-categoria',

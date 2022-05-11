@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Produto } from '../services/data.service';
+import { Produto } from '../services/produto.service';
 
 @Component({
   selector: 'app-promocional',

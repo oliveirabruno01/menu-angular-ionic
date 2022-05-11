@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { DataService, CategoriaObject, Produto } from '../services/data.service';
-
+import { CategoriaService, CategoriaObject } from '../services/categoria.service';
+import { Produto, ProdutoService } from '../services/produto.service';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -8,7 +8,7 @@ import { DataService, CategoriaObject, Produto } from '../services/data.service'
 })
 export class HomePage {
   public itemPromocional: Produto;
-  constructor(private data: DataService) {}
+  constructor(private data_categorias: CategoriaService, private data_produtos: ProdutoService) {}
 
   refresh(ev) {
     setTimeout(() => {
@@ -17,11 +17,11 @@ export class HomePage {
   }
 
   getCategoriasList(): CategoriaObject[] {
-    return this.data.getCategoriasList();
+    return this.data_categorias.getCategoriasList();
   }
 
   getProdutoPromocional(): Produto {
-    console.log(this.data.getProduto("Promocional"));
-    return this.data.getProduto("Promocional");
+    console.log(this.data_produtos.getProduto("Promocional"));
+    return this.data_produtos.getProduto("Promocional");
   }
 }

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DataService, CategoriaObject, Produto } from '../services/data.service';
+import { Produto, ProdutoService } from '../services/produto.service';
 
 @Component({
-  selector: 'app-view-message',
+  selector: 'app-view-categoria',
   templateUrl: './view-categoria.page.html',
   styleUrls: ['./view-categoria.page.scss'],
 })
@@ -12,13 +12,13 @@ export class ViewCategoriaPage implements OnInit {
   public categoria: string;
 
   constructor(
-    private data: DataService,
+    private data_produtos: ProdutoService,
     private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
     const nome = this.activatedRoute.snapshot.paramMap.get('nome');
-    this.produtos = this.data.getCategoriaProdutos(nome);
+    this.produtos = this.data_produtos.getCategoriaProdutos(nome);
     this.categoria = nome;
   }
 

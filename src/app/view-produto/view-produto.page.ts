@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DataService, Produto } from '../services/data.service';
+import { Produto, ProdutoService } from '../services/produto.service';
 
 @Component({
   selector: 'app-view-produto',
@@ -11,13 +11,13 @@ export class ViewProdutoPage implements OnInit {
   public produto: Produto;
 
   constructor(
-    private data: DataService,
+    private data_produtos: ProdutoService,
     private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
     const nome = this.activatedRoute.snapshot.paramMap.get('nome');
-    this.produto = this.data.getProduto(nome);
+    this.produto = this.data_produtos.getProduto(nome);
   }
 
   getBackButtonText() {
