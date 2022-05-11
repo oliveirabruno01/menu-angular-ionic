@@ -1,7 +1,10 @@
+<!--Categoria Component Template-->
 <ion-col>
+  <!--"Imprime" o elemento ion-item SE houver uma váriavel de input 'categoria' - Ver mais em categoria.component -(*ngIf) -->
   <ion-item *ngIf="categoria" [routerLink]="'/categoria/' + categoria.nome" [detail]="false">
     <ion-card>
-      <ion-label class="ion-text-wrap">
+      <ion-label>
+        <!--Centralize e capitalize (primeira letra maíuscula) o elemento ion-title-->
         <ion-title class="ion-text-center ion-text-capitalize">{{ categoria.nome }}</ion-title>
           <ion-img [src]="categoria.thumbnail_src"></ion-img>
       </ion-label>

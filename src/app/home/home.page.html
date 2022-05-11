@@ -1,3 +1,5 @@
+<!--HomePage-->
+
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title class="ion-text-center">
@@ -23,9 +25,11 @@
   
   <ion-grid>
     <ion-row>
+      <!--Insira o banner do produto promocional-->
       <app-promocional [produto]="getProdutoPromocional()"></app-promocional>
     </ion-row>
     <ion-row>
+      <!--Para cada categoria insira um CategoriaComponent -->
       <app-categoria *ngFor="let categoria of getCategoriasList()" [categoria]="categoria"></app-categoria>
     </ion-row>
   </ion-grid>
