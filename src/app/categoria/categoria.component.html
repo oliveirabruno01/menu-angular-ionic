@@ -1,0 +1,10 @@
+<ion-col>
+  <ion-item *ngIf="categoria" [routerLink]="'/categoria/' + categoria.nome" [detail]="false">
+    <ion-card>
+      <ion-label class="ion-text-wrap">
+        <ion-title class="ion-text-center ion-text-capitalize">{{ categoria.nome }}</ion-title>
+          <ion-img [src]="categoria.thumbnail_src"></ion-img>
+      </ion-label>
+    </ion-card>
+  </ion-item>
+</ion-col>
