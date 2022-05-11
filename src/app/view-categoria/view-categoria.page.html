@@ -6,3 +6,11 @@
     <ion-title class="ion-text-center ion-text-capitalize">{{ categoria }}</ion-title>
   </ion-toolbar>
 </ion-header>
+
+<ion-content [fullscreen]="true" *ngIf="produtos">
+  <ion-grid>
+    <ion-row>
+      <app-produto *ngFor="let produto of produtos" [produto]="produto"></app-produto>
+    </ion-row>
+  </ion-grid>
+</ion-content>

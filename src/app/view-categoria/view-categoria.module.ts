@@ -6,13 +6,15 @@ import { ViewCategoriaPage } from './view-categoria.page';
 import { IonicModule } from '@ionic/angular';
 
 import { ViewCategoriaPageRoutingModule } from './view-categoria-routing.module';
+import { ProdutoComponentModule } from '../produto/produto.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ViewCategoriaPageRoutingModule
+    ViewCategoriaPageRoutingModule,
+    ProdutoComponentModule
   ],
   declarations: [ViewCategoriaPage]
 })
